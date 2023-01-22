@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap');
+*{
+  margin: 0%;
+  padding: 0%;
+  /* background: #f9f9f9; */
+}
+.nav-margin{
+  /* margin-left: 3.7rem; */
+  font-family: 'Pacifico', cursive;
+  z-index: 1;
+  position: relative;
+}
+.pacifico{
+  font-family: 'Pacifico', cursive;
+}
+.poppins{
+  font-family: 'Poppins', sans-serif;
+}
+.playfair{
+  font-family: 'Playfair Display', serif;
+}
+Link{
+  text-decoration: none;
+}
+a{
+  text-decoration: none;
+}
+.upper-div{
+  transform: scaleY(30px);
+}
