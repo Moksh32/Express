@@ -1,10 +1,12 @@
-const { application } = require("express");
+const { application, Router } = require("express");
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const authenticate = require("../middleware/authentication")
 
-
+const cookieParser = require('cookie-parser');
+router.use(cookieParser())
 
 const { getAllUsers } = require("../controllers/products");
 require("../db/connect");
@@ -37,7 +39,7 @@ router.post("/register", async (req, res) => {
     res.status(400).json({ message: "unknown error" });
   }
 });
-module.exports = router;
+
 
 //login router
 router.post("/login", async (req, res) => {
@@ -59,3 +61,12 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ error: "Unknown Error" });
   }
 });
+
+
+router.get('/abou', authenticate ,(req,res)=>{
+  console.log('about ka page')
+  res.send(req.rootuser)
+})
+
+
+module.exports = router;

@@ -1,8 +1,35 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import '../App.css'
 import logo from "../logo.png";
+import { useNavigate } from "react-router-dom";
 
 function About() {
+    const navigate = useNavigate()
+    const callAboutPage = async() => {
+        try {
+            const res = await fetch('/abou', {
+                method:"GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                credentials: "include"
+            });
+            const data = await res.json();
+            console.log(data);
+            if (!res.status === 200) {
+                const error = new Error(res.error);
+                throw error;
+            }
+        } catch (err) {
+            console.log(err);
+            navigate('/signin');
+        }
+        }
+    useEffect(() => {
+      callAboutPage();
+    }, [])
+    
     return (
         <>
             <div className='d-flex justify-content-center align-items-center'>
